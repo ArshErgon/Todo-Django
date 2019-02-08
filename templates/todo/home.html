@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+		<title></title>
+			<body>
+				<h1 style="padding-left: 40%; background-color: black; color: white" >Todo list</h1><hr>
+				<div class="container">
+				<div class="jumbotron">
+					<ul>
+					{% for todo in todo_context %}
+						{{ forloop.counter }}: {{ todo.message|capfirst }}
+						<form action="{%  url 'delete' pk=todo.id %}" method="post">{% csrf_token %}
+							<button style="display: flex;" class="btn btn-primary">Delete</button>
+						</form><br>
+					{% endfor %}			
+					</ul>
+					<br><br><br>
+					<form method="post">{% csrf_token %}
+						<hr>
+						{{ form }}
+						<hr>
+					</form>
+				</div>
+				</div>
+		</body>
+		<style type="text/css">
+			::selection {
+				color: white;
+				background-color: black;
+			}
+		</style>
+</html>
