@@ -15,7 +15,7 @@ class UserRegister(models.Model):
 		return self.name
 
 class User(models.Model):
-	user_name = models.ForeignKey(UserRegister, on_delete=models.CASCADE)
+	user_name = models.OneToOneField(UserRegister, on_delete=models.CASCADE) 
 	user_todo = models.TextField()
 
 	def __str__(self):

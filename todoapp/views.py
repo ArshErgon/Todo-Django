@@ -14,8 +14,8 @@ def try_page(request):
 	print(dir(request.user))
 	print(request.user.pk)
 	print(request.user.username)
+	print(dir(User))
 	if request.method == "POST":
-		User.objects.create(user_name=name)
 		User.objects.create(user_todo=todo)
 		return redirect('/try/')
 	return render(request, 'todo/try.html')
@@ -54,7 +54,7 @@ def sign_page(request):
 		UserRegister.objects.create(name=username, email=email, password=password)
 		new_user = users.objects.create_user(username, email, password, is_staff=True)
 		login(request, new_user)
-		redirect('/')
+		return redirect('/')
 
 	return render(request, 'registration/sign.html', {'form':form})
 
