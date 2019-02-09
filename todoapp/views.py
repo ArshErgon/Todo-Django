@@ -18,3 +18,7 @@ def home(request):
 def delete_todo(request, pk):
 	delete_data = Todo.objects.get(id=pk).delete()
 	return redirect('/')
+
+def error_404(request, exception):
+	data = {'name':'todo.herokuapp.com'}
+	return render(request, 'error404/index.html', data)
