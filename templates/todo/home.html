@@ -6,26 +6,46 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
 		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-		<title></title>
+		<link rel="icon" type="image/png" href="{% static 'register/images/icons/favicon.ico' %}"/>
+		<title>Todo List</title>
 			<body>
-				<h1 style="padding-left: 40%; background-color: black; color: white" >Todo list</h1><hr>
+				<h1 style=" background-color: black; color: white"><center>Todo list</center></h1><hr>
 				<div class="container">
+					<center>Welcome {{ request.user }} &#x26A1;</center>
+					<center>
+						{% if request.user.is_authenticated %}
+								<a href="{% url 'logout' %}">LogoOut</a>
+						{% else %}
+								<a href="{% url 'login' %}">LogIn</a><br>
+								&#10096; You're currently OFFline &#10097;
+						{% endif %}
+					</center>
 				<div class="jumbotron">
+					{% if request.user.is_authenticated %}
 					<ul>
 					{% for todo in todo_context %}
 						{{ forloop.counter }}: {{ todo.message|capfirst }}
 						<form action="{%  url 'delete' pk=todo.id %}" method="post">{% csrf_token %}
-							<button style="display: flex;" class="btn btn-primary">Delete</button>
+							<button style="display: flex;" class="bubbly-button">Delete</button>
 						</form><br>
 					{% endfor %}			
 					</ul>
 					<br><br><br>
-					<form method="post">{% csrf_token %}
+					<form method="post" action="{% url 'home' %}">{% csrf_token %}
 						<hr>
 						{{ form }}
-						<button class="btn btn-danger">Add</button>
+						<button class="bubbly-button">Add</button>
 						<hr>
 					</form>
+					{% else %}
+					<p>List your daily items</p>
+					<ol type="1">
+						<li>: To do list</li><button class="bubbly-button">Delete</button>
+						<li>: Login</li><button class="bubbly-button">Delete</button>
+					</ul>
+					<br>
+					<p>Login and add some thing</p>
+					{% endif %}
 				</div>
 				</div>
 		</body>
