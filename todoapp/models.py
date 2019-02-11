@@ -1,6 +1,7 @@
 from django.db import models
 
 class Todo(models.Model):
+	name = models.CharField(max_length=50)
 	message = models.TextField()
 
 	def __str__(self):
@@ -14,9 +15,3 @@ class UserRegister(models.Model):
 	def __str__(self):
 		return self.name
 
-class User(models.Model):
-	user_name = models.OneToOneField(UserRegister, on_delete=models.CASCADE) 
-	user_todo = models.TextField()
-
-	def __str__(self):
-		return self.user_name

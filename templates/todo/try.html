@@ -1,8 +1,0 @@
-{{ request.user }} -- {{ user }}
-
-<form action="{% url 'try' %}" method="post">{% csrf_token %}
-
-	<input type="todo" name="todo" required>
-	<button>Submit</button>
-	
-</form>
