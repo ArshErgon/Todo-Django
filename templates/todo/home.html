@@ -43,8 +43,24 @@
 					{% else %}
 					<p>List your daily items</p>
 					<ol type="1">
-						<li>: To do list</li><button class="bubbly-button">Delete</button>
-						<li>: Login</li><button class="bubbly-button">Delete</button>
+						<li>: To do list</li><button type="button" class="bubbly-button" data-toggle="modal" data-target="#myModal">Add</button>
+					  <div class="modal fade" id="myModal" role="dialog">
+					    <div class="modal-dialog">
+					        <div class="alert alert-danger alert-dismissible">
+					            <a  class="close" data-dismiss="modal" aria-label="close">&times;</a>
+					            <strong>Oops!</strong> First login then add items
+					          </div>
+					    </div>
+					  </div>
+						<li>: Login</li><button type="button" class="bubbly-button" data-toggle="modal" data-target="#myModal">Add</button>
+					  <div class="modal fade" id="myModal" role="dialog">
+					    <div class="modal-dialog">
+					        <div class="alert alert-danger alert-dismissible">
+					            <a  class="close" data-dismiss="modal" aria-label="close">&times;</a>
+					            <strong>Oops!</strong> First login then add items
+					          </div>
+					    </div>
+					  </div>
 					</ul>
 					<br>
 					<p>Login and add some thing</p>
@@ -58,4 +74,9 @@
 				background-color: black;
 			}
 		</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 </html>

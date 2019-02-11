@@ -29,6 +29,7 @@ urlpatterns = [
     path('sign/', views.sign_page, name='sign'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('thank/', views.thank_you_page, name="thank"),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "todoapp.views.error_404"

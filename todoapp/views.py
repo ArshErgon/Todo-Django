@@ -58,3 +58,4 @@ def thank_you_page(request):
 def error_404(request, exception):
 	data = {'name':'todoitems.herokuapp.com'}
 	return render(request, 'error404/index.html', data)
+
